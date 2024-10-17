@@ -1,0 +1,17 @@
+<ActionBar title="Anxiety Tracker">
+  <ActionItem ios.position="right" android.position="actionBar" (tap)="onAddTap()">
+    <Label text="Add Entry" class="action-label"></Label>
+  </ActionItem>
+</ActionBar>
+
+<GridLayout>
+  <ListView [items]="journalEntries">
+    <ng-template let-item="item">
+      <StackLayout [nsRouterLink]="['/journal', item.id]" class="p-4">
+        <Label [text]="item.date | date:'short'" class="text-sm text-gray-500"></Label>
+        <Label [text]="'Mood: ' + item.mood" class="text-lg font-bold"></Label>
+        <Label [text]="item.content" class="text-base text-gray-700" textWrap="true"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

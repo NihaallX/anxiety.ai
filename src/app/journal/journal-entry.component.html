@@ -1,0 +1,19 @@
+<ActionBar [title]="isEditing ? 'Edit Entry' : 'New Entry'">
+  <NavigationButton text="Back" android.systemIcon="ic_menu_back" (tap)="onBackTap()"></NavigationButton>
+  <ActionItem ios.position="right" android.position="actionBar" (tap)="onSaveTap()">
+    <Label text="Save" class="action-label"></Label>
+  </ActionItem>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label text="Date" class="text-lg font-bold"></Label>
+    <Label [text]="entry.date | date:'short'" class="text-base mb-4"></Label>
+
+    <Label text="Mood" class="text-lg font-bold"></Label>
+    <TextField [(ngModel)]="entry.mood" hint="How are you feeling?" class="mb-4"></TextField>
+
+    <Label text="Journal Entry" class="text-lg font-bold"></Label>
+    <TextView [(ngModel)]="entry.content" hint="Write your thoughts here..." rows="5" class="mb-4"></TextView>
+  </StackLayout>
+</ScrollView>
